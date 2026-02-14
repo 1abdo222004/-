@@ -1,325 +1,169 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>💸 Earn App</title>
 
 <!-- Telegram WebApp -->
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
 <!-- ✅ Monetag SDK -->
-<script src='//libtl.com/sdk.js' 
-	data-zone='10601872'
-	data-sdk='show_10601872'>
-	</script>
-<title>ادعم بوت منع الإباحية</title>
+<script src='//libtl.com/sdk.js'
+        data-zone='10602007'
+        data-sdk='show_10602007'></script>
 
 <style>
 body{
+    margin:0;
+    font-family:system-ui;
     background:#0f172a;
     color:white;
-    font-family:system-ui;
     text-align:center;
+}
+
+.container{
     padding:25px;
-    margin:0;
-    direction:rtl;
-}
-
-.profile{
-    margin-bottom:20px;
-}
-
-.profile-img{
-    width:100px;
-    height:100px;
-    border-radius:50%;
-    background:#22c55e;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin:0 auto 15px;
-    font-size:48px;
-}
-
-.app-name{
-    background: #1e293b;
-    padding: 12px;
-    border-radius: 50px;
-    font-size: 14px;
-    color: #94a3b8;
-    display: inline-block;
-    margin-bottom: 10px;
-}
-
-h1{
-    font-size:24px;
-    margin-bottom:5px;
-    color:#fff;
-}
-
-.subtitle{
-    color:#94a3b8;
-    font-size:16px;
-    margin-bottom:25px;
-    line-height:1.6;
 }
 
 .card{
     background:#1e293b;
-    border-radius:24px;
     padding:25px;
-    margin-top:10px;
-    border:1px solid #334155;
+    border-radius:20px;
+    margin-top:25px;
 }
 
-.stats-grid{
-    display:flex;
-    justify-content:space-around;
-    margin-bottom:25px;
+h1{
+    font-size:26px;
+    margin-bottom:20px;
 }
 
-.stat-item{
-    text-align:center;
-}
-
-.stat-value{
-    font-size:32px;
-    font-weight:bold;
-    color:#22c55e;
-}
-
-.stat-label{
-    color:#94a3b8;
-    font-size:14px;
-    margin-top:5px;
-}
-
-.message-box{
-    background:#0f172a;
-    border-radius:16px;
-    padding:20px;
-    margin:20px 0;
-    border-right:4px solid #22c55e;
-    text-align:right;
-}
-
-.message-box p{
-    margin:5px 0;
-    color:#e2e8f0;
-    font-size:15px;
-    line-height:1.7;
-}
-
-.heart{
-    color:#ef4444;
-    font-size:20px;
-}
-
-.highlight{
-    color:#22c55e;
-    font-weight:bold;
+.stat{
     font-size:18px;
+    margin:8px 0;
 }
 
 button{
     width:100%;
     padding:18px;
-    font-size:18px;
-    border-radius:14px;
     border:none;
+    border-radius:14px;
+    font-size:18px;
     background:#22c55e;
     color:white;
-    margin-top:15px;
-    font-weight:bold;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    cursor:pointer;
-    transition:0.3s;
+    margin-top:18px;
 }
 
-button:hover{
-    background:#16a34a;
-    transform:scale(0.98);
-}
-
-.support-note{
-    margin-top:20px;
-    color:#94a3b8;
-    font-size:13px;
-}
-
-.footer{
-    margin-top:30px;
-    color:#64748b;
-    font-size:12px;
-}
-
-.progress{
-    margin-top:25px;
-    background:#0f172a;
-    border-radius:50px;
-    height:10px;
-    overflow:hidden;
-}
-
-.progress-bar{
-    height:100%;
-    width:0%;
-    background:#22c55e;
-    transition:width 0.5s;
-}
-
-.dollar-value{
-    background: #0f172a;
-    padding: 12px;
-    border-radius: 12px;
-    margin-top: 15px;
-    font-size: 15px;
-    color: #94a3b8;
-}
-
-.dollar-value span{
-    color: #22c55e;
-    font-size: 22px;
-    font-weight: bold;
+button:disabled{
+    background:gray;
 }
 </style>
 </head>
 
-<body>
 
-<div class="profile">
-    <div class="profile-img">🛡️</div>
-    <span class="app-name">⚠️ بوت مكافحة المواد الإباحية</span>
-    <h1>ساعدني في حماية الأسر</h1>
-    <div class="subtitle">
-        🎯 بوتي يمنع آلاف الروابط الإباحية يوميًا<br>
-        لكن استضافته تحتاج دعمك المالي للاستمرار
-    </div>
-</div>
+<body>
+<div class="container">
+
+<h1>💸 تطبيق الربح من الإعلانات</h1>
 
 <div class="card">
-    <div class="stats-grid">
-        <div class="stat-item">
-            <div class="stat-value" id="points">0</div>
-            <div class="stat-label">💰 إجمالي النقاط</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-value" id="ads">0</div>
-            <div class="stat-label">🎬 إعلان تم مشاهدته</div>
-        </div>
-    </div>
+    <div class="stat">⭐ النقاط: <b id="points">0</b></div>
+    <div class="stat">🎬 الإعلانات المكتملة: <b id="ads">0</b></div>
 
-    <div class="dollar-value">
-        💵 القيمة بالدولار: <span id="dollarAmount">0.000</span> $
-    </div>
-
-    <div class="message-box">
-        <span class="heart">❤️</span> كلمة من المطور:
-        <p>
-            "أعمل على هذا البوت منذ سنة كاملة بدون أي دعم.<br>
-            <span class="highlight">كل 10 نقاط = 0.004$</span> فقط!<br>
-            سيرفر البوت يكلفني 30$ شهريًا، أحتاج 7500 نقطة للاستمرار.<br>
-            حتى مشاهدة إعلان واحد تقربني خطوة."
-        </p>
-    </div>
-
-    <div class="progress">
-        <div class="progress-bar" id="progressBar" style="width:0%"></div>
-    </div>
-    <div style="display:flex; justify-content:space-between; margin-top:5px; color:#94a3b8; font-size:12px;">
-        <span>0%</span>
-        <span>🎯 الهدف: 7500 نقطة (30$)</span>
-        <span id="targetPercent">0%</span>
-    </div>
-
-    <button onclick="watchAd()">
-        🎬 شاهد إعلانًا وادعم البوت
-        <span style="font-size:14px;">+0.004$</span>
+    <button id="adBtn" onclick="watchAd()">
+        🎬 شاهد إعلان واربح 10 نقاط
     </button>
-    
-    <div class="support-note">
-        ⚡ كل مشاهدة = 10 نقاط = 0.004$ = 10 دقائق تشغيل إضافية
-    </div>
 </div>
 
-<div class="footer">
-    <p>🛡️ بوت منع الإباحية • يعمل لحماية 50,000+ مستخدم</p>
-    <p style="margin-top:8px;">⚠️ بدون دعمك، سيتوقف البوت نهاية هذا الشهر</p>
-    <p style="margin-top:15px; color:#22c55e;">كل 0.004$ تفرق.. أنت أملنا الوحيد</p>
 </div>
+
 
 <script>
+/* =========================
+   Telegram Init
+========================= */
 const tg = window.Telegram.WebApp;
 tg.expand();
 
-// تحميل البيانات
+
+/* =========================
+   Storage
+========================= */
 let points = parseInt(localStorage.getItem("points") || 0);
 let ads = parseInt(localStorage.getItem("ads") || 0);
 
+const btn = document.getElementById("adBtn");
+
 updateUI();
 
+
+/* =========================
+   UI
+========================= */
 function updateUI(){
     document.getElementById("points").innerText = points;
     document.getElementById("ads").innerText = ads;
-    
-    // تحويل النقاط إلى دولار (10 نقاط = 0.004$)
-    let dollar = (points / 10) * 0.004;
-    document.getElementById("dollarAmount").innerText = dollar.toFixed(3);
-    
-    // تحديث شريط التقدم (الهدف 7500 نقطة = 30$)
-    let target = 7500; // 7500 نقطة = 30 دولار (تكلفة السيرفر)
-    let percent = Math.min(100, Math.round((points / target) * 100));
-    document.getElementById("progressBar").style.width = percent + "%";
-    document.getElementById("targetPercent").innerText = percent + "%";
 }
 
+
+/* =========================
+   Reward System
+========================= */
 function rewardUser(){
-    points = points + 10;
-    ads = ads + 1;
+    points += 10;
+    ads += 1;
 
     localStorage.setItem("points", points);
     localStorage.setItem("ads", ads);
 
     updateUI();
-
-    let dollar = (points / 10) * 0.004;
-    
-    // رسالة شكر عاطفية
-    if(ads === 1){
-        alert("❤️ شكراً جزيلاً! أول 0.004$ تصلني اليوم. الله يبارك فيك");
-    } else if(ads % 50 === 0){
-        alert(`🎉 وصلت لـ ${ads} إعلان! بفضلك جمعت ${dollar.toFixed(3)}$`);
-    } else {
-        alert("✅ +0.004$ • جزاك الله خيراً على دعمك");
-    }
 }
 
-function watchAd(){
-    if(typeof show_10601872 === 'function'){
-        show_10601872().then(() => {
-            rewardUser();
-        }).catch(() => {
-            alert("❌ الإعلان غير متاح حالياً، لكن دعوتك معي ولك الأجر");
-        });
-    } else {
-        alert("⚠️ خدمة الإعلانات قيد التحميل، انتظر قليلاً ثم حاول");
-        // محاكاة للاختبار
-        setTimeout(() => {
-            rewardUser();
-        }, 1000);
-    }
-}
 
-// رسالة ترحيب
-window.onload = function(){
-    if(ads === 0){
-        setTimeout(() => {
-            alert("🛡️ السلام عليكم..\nكل 10 نقاط = 0.004$ فقط.\nحتى مشاهدة واحدة تنقذ البوت من التوقف.");
-        }, 500);
+/* =========================
+   Anti Spam Cooldown
+========================= */
+let cooldown = false;
+const WAIT_TIME = 30; // ثانية
+
+
+/* =========================
+   Watch Ad
+========================= */
+async function watchAd(){
+
+    if(cooldown){
+        alert("⏳ انتظر " + WAIT_TIME + " ثانية قبل إعلان جديد");
+        return;
     }
+
+    cooldown = true;
+
+    btn.disabled = true;
+    btn.innerText = "⏳ جاري عرض الإعلان...";
+
+    try {
+
+        /* ✅ يدخل هنا فقط عند إكمال الإعلان بالكامل */
+        await show_10602007();
+
+        rewardUser();
+
+        alert("✅ تم إكمال الإعلان +10 نقاط");
+
+    } catch(e) {
+
+        /* ❌ أغلق الإعلان → لا نقاط */
+        alert("❌ لم تكمل الإعلان، لا توجد مكافأة");
+
+    }
+
+    setTimeout(()=>{
+        cooldown = false;
+        btn.disabled = false;
+        btn.innerText = "🎬 شاهد إعلان واربح 10 نقاط";
+    }, WAIT_TIME * 1000);
 }
 </script>
 
